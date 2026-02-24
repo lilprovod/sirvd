@@ -3,8 +3,7 @@
 #ifndef RK_H
 #define RK_H
 
-#define H_MIN 1e-6
-#define H_MAX 10.0
+#include "coef.h"
 
 
 typedef void (*RhsFunc)(double t, const double* x,
