@@ -8,7 +8,6 @@
 #include "sirvd.h"
 
 typedef enum {
-    METHOD_EULER,
     METHOD_RK2,
     METHOD_RK3,
     METHOD_RK4,
@@ -30,7 +29,6 @@ static int streq(const char* a, const char* b)
 
 static int parse_method(const char* s, Method* out)
 {
-    if (streq(s, "euler")) { *out = METHOD_EULER; return 1; }
     if (streq(s, "rk2"))   { *out = METHOD_RK2;   return 1; }
     if (streq(s, "rk3"))   { *out = METHOD_RK3;   return 1; }
     if (streq(s, "rk4"))   { *out = METHOD_RK4;   return 1; }
@@ -117,7 +115,7 @@ int main(int argc, char** argv)
                 Method m;
 
                 if (!parse_method(val, &m)) {
-                    printf("Unknown method: %s\nUse: euler | rk2 | rk3 | rk4 | rk56\n", val);
+                    printf("Unknown method: %s\nUse: rk2 | rk3 | rk4 | rk56\n", val);
                     return 1;
                 }
 
@@ -204,8 +202,6 @@ int main(int argc, char** argv)
                 t, h, H_MIN, H_MAX, x[0], x[1], x[2], x[3], x[4]);
         
         switch (method) {
-            case METHOD_EULER:
-                euler_step(t, h, x, SIRVD_DIM, sirvd_rhs_wrap, &p); break;
             case METHOD_RK2:
                 rk2_step(t, h, x, SIRVD_DIM, sirvd_rhs_wrap, &p);   break;
             case METHOD_RK3:

@@ -14,25 +14,6 @@ double clamp(double v, double lo, double hi)
     return v;
 }
 
-void euler_step(
-    double      t,
-    double      h,
-    double*     x,
-    int         dim,
-    RhsFunc     f,
-    const void* params
-)
-{
-    double dxdt[dim];
-
-    f(t, x, dxdt, params);
-
-    for (int i = 0; i < dim; i++) {
-        x[i] += h * dxdt[i];
-    }
-}
-
-
 void rk2_step(
     double      t,
     double      h,

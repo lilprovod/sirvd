@@ -12,10 +12,6 @@ typedef void (*RhsFunc)(double t, const double* x,
 
 double clamp(double v, double lo, double hi);
 
-void euler_step(double t, double h,
-                double* x, int dim,
-                RhsFunc f, const void* params);
-
 void rk2_step(double t, double h,
               double* x, int dim,
               RhsFunc f, const void* params);
