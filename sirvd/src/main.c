@@ -113,7 +113,7 @@ int main(int argc, char** argv)
                 return 1;
             }
 
-            if (streq(key, "method")) {
+            if (streq(key, "method") || streq(key, "m")) {
                 Method m;
 
                 if (!parse_method(val, &m)) {
@@ -124,9 +124,9 @@ int main(int argc, char** argv)
                 method = m;
             } else if (streq(key, "h")) {
                 h = atof(val);
-            } else if (streq(key, "t_end")) {
+            } else if (streq(key, "t_end") || streq(key, "time") || streq(key, "t")) {
                 t_end = atof(val);
-            } else if (streq(key, "out") || streq(key, "output") || streq(key, "output_file")) {
+            } else if (streq(key, "o") || streq(key, "out") || streq(key, "output") || streq(key, "output_file")) {
                 out_name = argv[i] + (strchr(arg, '=') - arg) + 1;
 
             } else if (streq(key, "atol")) {
@@ -137,19 +137,19 @@ int main(int argc, char** argv)
             } else if (streq(key, "N")) {
                 p.N = atof(val);
                 
-            } else if (streq(key, "alpha")) {
+            } else if (streq(key, "alpha") || streq(key, "a")) {
                 double alpha = atof(val);
                 p.alpha = clamp(alpha, 0.0, 1.0);
-            } else if (streq(key, "beta")) {
+            } else if (streq(key, "beta") || streq(key, "b")) {
                 double beta = atof(val);
                 p.beta = clamp(beta, 0.0, 1.0);
-            } else if (streq(key, "gamma")) {
+            } else if (streq(key, "gamma") || streq(key, "g")) {
                 double gamma = atof(val);
                 p.gamma = clamp(gamma, 0.0, 1.0);
-            } else if (streq(key, "delta")) {
+            } else if (streq(key, "delta") || streq(key, "d")) {
                 double delta = atof(val);
                 p.delta = clamp(delta, 0.0, 1.0);
-            } else if (streq(key, "sigma")) {
+            } else if (streq(key, "sigma") || streq(key, "s")) {
                 double sigma = atof(val);
                 p.sigma = clamp(sigma, 0.0, 1.0);
 
