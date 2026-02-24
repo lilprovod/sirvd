@@ -18,6 +18,9 @@ void sirvd_rhs(
     const double V = x[3];
     const double D = x[4];
 
+    (void)V;
+    (void)D;
+
     // население и коэф. системы
     const double N = p->N;
     
