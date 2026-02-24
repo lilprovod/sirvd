@@ -1,0 +1,11 @@
+# build artefacts
+sirvd
+*.exe
+*.csv
+
+# python
+__pychache__/
+*pyc
+
+# editor
+.vscode/
