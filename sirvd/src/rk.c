@@ -40,7 +40,7 @@ void rk2_step(
     f(t, x, k1, params);        // k1 = f(tn, xn)
 
     for (int i = 0; i < dim; i++) {
-        x_middle[i] = x[i] + (double)(h / 2.0) * k1[i];     // x_mid = xn + h/2 * k1
+        x_middle[i] = x[i] + (h / 2.0) * k1[i];     // x_mid = xn + h/2 * k1
     }
 
     f(t + h / 2.0, x_middle, k2, params);   // k2 = f(t + h/2, x)
@@ -79,7 +79,7 @@ void rk3_step(
     f(t, x, k1, params);
 
     for (int i = 0; i < dim; i++) {
-        x_middle[i] = x[i] + (double)(h / 2.0) * k1[i];
+        x_middle[i] = x[i] + (h / 2.0) * k1[i];
     }
 
     f(t + h / 2.0, x_middle, k2, params);
@@ -91,7 +91,7 @@ void rk3_step(
     f(t + h, x_end, k3, params);
 
     for (int i = 0; i < dim; i++) {
-        x[i] = x[i] + (double)(h / 6.0) * (k1[i] + 4.0 * k2[i] + k3[i]);
+        x[i] = x[i] + (h / 6.0) * (k1[i] + 4.0 * k2[i] + k3[i]);
     }
 }
 
@@ -127,13 +127,13 @@ void rk4_step(
     f(t, x, k1, params);
     
     for (int i = 0; i < dim; i++) {
-        x_mid_k1[i] = x[i] + (double)(h / 2.0) * k1[i];
+        x_mid_k1[i] = x[i] + (h / 2.0) * k1[i];
     }
 
     f(t + h/2.0, x_mid_k1, k2, params);
 
     for (int i = 0; i < dim; i++) {
-        x_mid_k2[i] = x[i] + (double)(h / 2.0) * k2[i];
+        x_mid_k2[i] = x[i] + (h / 2.0) * k2[i];
     }
 
     f(t + h/2.0, x_mid_k2, k3, params);
@@ -145,7 +145,7 @@ void rk4_step(
     f(t + h, x_end, k4, params);
 
     for (int i = 0; i < dim; i++) {
-        x[i] = x[i] + (double)(h / 6.0) * (k1[i] + 2.0 * k2[i] + 2.0 * k3[i] + k4[i]);
+        x[i] = x[i] + (h / 6.0) * (k1[i] + 2.0 * k2[i] + 2.0 * k3[i] + k4[i]);
     }
 }
 
