@@ -86,11 +86,11 @@ int main(int argc, char** argv)
     // Parameters
     SIRVDParams p;
     p.N = 1000000.0;
-    p.alpha = 0.0005;
-    p.beta  = 0.4;
-    p.gamma = 0.1;
-    p.delta = 0.002;
-    p.sigma = 0.2;
+    p.alpha = 0.0015;
+    p.beta  = 0.25;
+    p.gamma = 0.10;
+    p.delta = 0.0005;
+    p.sigma = 0.005;
 
     // At start
     double x[SIRVD_DIM];

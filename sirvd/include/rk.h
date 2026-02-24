@@ -3,7 +3,7 @@
 #ifndef RK_H
 #define RK_H
 
-#define H_MIN 1e-8
+#define H_MIN 1e-6
 #define H_MAX 10.0
 
 
