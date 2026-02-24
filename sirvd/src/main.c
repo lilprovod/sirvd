@@ -15,6 +15,19 @@ typedef enum {
     METHOD_RK56_ADAPTIVE,
 } Method;
 
+static int streq(const char* a, const char* b)
+{
+    /**
+     * @brief Сравнивает строки
+     */
+    while (*a && *b) {
+        if (tolower( (unsigned char)*a ) != tolower( (unsigned char)*b )) return 0;
+        a++;
+        b++;
+    }
+    return (*a == '\0' && *b == '\0');
+}
+
 static int parse_method(const char* s, Method* out)
 {
     if (streq(s, "euler")) { *out = METHOD_EULER; return 1; }
@@ -32,19 +45,6 @@ static int is_kv(const char* s)
      * @brief Проверяет, является ли строка парой ключ-значение
      */
     return strchr(s, '=') != NULL;
-}
-
-static int streq(const char* a, const char* b)
-{
-    /**
-     * @brief Сравнивает строки
-     */
-    while (*a && *b) {
-        if (tolower( (unsigned char)*a ) != tolower( (unsigned char)*b )) return 0;
-        a++;
-        b++;
-    }
-    return (*a == '\0' && *b == '\0');
 }
 
 static int parse_kv(const char* s, char* key, size_t ksz, char* val, size_t vsz)
