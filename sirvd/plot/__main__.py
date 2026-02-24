@@ -19,9 +19,12 @@ def draw_from_csv(filename: str = "output.csv"):
     grid_c = "#3A3A3A"
     text_c = "#E6E6E6"
     grey_c = "#8A8A8A"
+    
     suspct = "#38BDF8"
-    infect = "#EF4444"
+    infect = "#F59E0B"
     recovd = "#22C55E"
+    vaccin = "#B575F1"
+    deceas = "#F43F5E"
     
     fig, axes = plt.subplots(
         nrows=3, ncols=1,
@@ -57,11 +60,14 @@ def draw_from_csv(filename: str = "output.csv"):
         for text in legend.get_texts():
             text.set_color(text_c)
     
-    # Основной график: S, I, R
+    # Основной график: S, I, R, V, D
     ax = axes[0]
-    ax.plot(df["t"], df["S"], label="S — восприимчивые", color=suspct, linewidth=2.0, alpha=0.95)
-    ax.plot(df["t"], df["I"], label="I — зараженные",    color=infect, linewidth=2.0, alpha=0.95)
-    ax.plot(df["t"], df["R"], label="R — выздоровевшие", color=recovd, linewidth=2.0, alpha=0.95)
+    ax.plot(df["t"], df["V"], label="V — вакцинированные", color=vaccin, linewidth=1.5, alpha=0.75, linestyle="-.")
+    ax.plot(df["t"], df["D"], label="D — умершие",         color=deceas, linewidth=1.5, alpha=0.75, linestyle="--")
+    ax.plot(df["t"], df["S"], label="S — восприимчивые",   color=suspct, linewidth=2.0, alpha=0.95)
+    ax.plot(df["t"], df["I"], label="I — зараженные",      color=infect, linewidth=2.0, alpha=0.95)
+    ax.plot(df["t"], df["R"], label="R — выздоровевшие",   color=recovd, linewidth=2.0, alpha=0.95)
+    
     
     ax.set_ylabel("Люди", color=text_c)
     ax.set_title("Динамика распространения", color=text_c, fontsize=12)
@@ -71,9 +77,13 @@ def draw_from_csv(filename: str = "output.csv"):
     
     # График суммы населения
     ax = axes[1]
-    df["sum"] = df["S"] + df["I"] + df["R"] + df["V"] + df["D"]
+    df["sum"]   = df["S"] + df["I"] + df["R"] + df["V"] + df["D"]
+    df["alive"] = df["sum"] - df["D"]
     
-    ax.plot(df["t"], df["sum"], label="Население (S + I + R + V + D)", color=accent, linewidth=2.0, alpha=0.95)
+    ax.plot(df["t"], df["sum"], label="Сумма людей (S + I + R + V + D)", color=accent, linewidth=2.0, alpha=0.95)
+    ax.plot(df["t"], df["alive"], label="Уцелевшее население", color=grey_c, linewidth=1.5, alpha=0.6, linestyle='--')
+    
+    ax.set_ylim(bottom=0)
     
     ax.set_ylabel("Люди", color=text_c)
     ax.set_title("Проверка сохранения населения", color=text_c, fontsize=12)
