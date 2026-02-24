@@ -33,7 +33,7 @@ git clone https://github.com/lilprovod/sirvd
 В командной строке перейдите в каталог репозитория. Примените следующую команду для компиляции:
 
 ```bash
-gcc src/main.c src/rk.c src/sirvd.c -O2 -Iinclude -lm -o sirvd
+gcc -std=c99 src/main.c src/rk.c src/sirvd.c -O2 -Iinclude -lm -o sirvd
 ```
 
 ### 2. Запустите моделирование
