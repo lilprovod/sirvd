@@ -7,5 +7,10 @@ sirvd
 __pychache__/
 *pyc
 
+# images
+*.png
+*.jpg
+*.jpeg
+
 # editor
 .vscode/
