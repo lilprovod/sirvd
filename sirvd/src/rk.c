@@ -159,7 +159,7 @@ int rk56_adaptive_step(
 {
     const double safety     = 0.9;
     const double min_factor = 0.2;
-    const double max_factor = 5.0;
+    const double max_factor = 2.0;
 
     // контроль шага
     double hh = *h;

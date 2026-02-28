@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include <ctype.h>
 
+#include "coef.h"
 #include "rk.h"
 #include "sirvd.h"
 
