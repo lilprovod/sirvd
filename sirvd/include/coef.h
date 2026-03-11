@@ -2,7 +2,7 @@
 #define COEF_H
 
 #define H_MIN 1e-6
-#define H_MAX 10.0
+#define H_MAX 0.01
 
 #define RK56_S 9
 
