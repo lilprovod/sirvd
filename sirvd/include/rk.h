@@ -27,7 +27,9 @@ void rk56_try_step(
     double t, double h,
     double* x, int dim,
     RhsFunc f, const void* params,
-    double* x5, double* x6);
+    double* x5, double* x6,
+    double* k1, int use_fsal,
+    double*     k_last);
 
 int rk56_adaptive_step(
     double* t, double* h,
